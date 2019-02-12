@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Take Home Atom Task</title>
+     <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700" rel="stylesheet" type="text/css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type="text/css">
+        button,
+        div,
+        form,
+        input,h3,a, img {
+          margin: 10px;
+          font-family: "Roboto Condensed", sans-serif;
+          float: left;
+          ;
+        }
+
+        /* clear the float from the sign that got to be under the pic 
+        For that purpose use clear-fix
+        */
+        p {
+            clear: both;
+             
+        }
+        .picture3 {
+            width: 260px;
+        }
+      </style>
+</head>
+<body>
+    <h3>
+    Task: Will test what is comming from the object of the API : https://jsonplaceholder.typicode.com/photos
+    </h3>
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    // Make an ajax call
+
+    //1. To explore the object
+    //2. To display the way it is delivered
+
+    function displayResponse() {
+        var picture = $("div").attr("data-name");
+        var queryURL ="https://jsonplaceholder.typicode.com/photos";
+var i = 0;
+
+
+        // create the call
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response) {
+            var Div = $("<div class='picture2'>");
+                console.log(response);
+
+      for (;i<11;i++) {          
+                // Access the array's objects
+                console.log(response[i].id)
+                var divId = $("<div class='picture3' data-name='"+ response[i].id + "'>");
+                var urlObj = response[i].url;
+                var thumbnailUrl = response[i].thumbnailUrl;
+                var title = response[i].title;
+                console.log(thumbnailUrl);
+
+
+                var pObj = $("<a>").text(urlObj).attr("href",urlObj); // add the href property
+                var name = $("<p>").text(title);
+                var picture = $("<img>").attr("src",thumbnailUrl); // append description to the source as attr
+
+                $("body").append(Div);
+                Div.append(divId);
+                divId.append(picture);
+                divId.append(name);
+                divId.append(pObj);
+      }          
+                 });
+    }
+    displayResponse();
+
+    //3. Conclusion--> it is an array of objects and you can manipulate it as array. Sort it and have access to its members
+
+
+    
+    </script>
+
+</body>
+</html>
