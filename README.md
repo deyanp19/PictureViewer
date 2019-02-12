@@ -3,4 +3,4 @@
 * This project is task by Atom Dev to create  picture viewer from API with 20000 objects.
 
 * Current progress can be checked with gitPages here https://deyanp19.github.io/PictureViewer/.
-## Current status : NOT FINISHED
+### Current status : NOT FINISHED
